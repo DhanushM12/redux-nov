@@ -1,0 +1,21 @@
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {addTask} from '../actions/index';
+
+class TaskInput extends Component {
+    render() {
+        return (
+            <div>
+                <input type="text" placeholder='Add a task' ref='task' />
+                <button onclick={() => this.props.addTask(this.refs.task.value)}>Add task</button>
+            </div>
+        );
+    }
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({addTask}, dispatch)
+}
+
+export default connect(() => {}, mapDispatchToProps)(TaskInput);
