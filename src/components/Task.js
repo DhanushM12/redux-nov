@@ -4,7 +4,11 @@ class Task extends Component {
     render() {
         return (
             <div>
-                Task
+               <tr>
+                <td>
+                    {this.props.task}
+                </td>
+                </tr>
             </div>
         );
     }

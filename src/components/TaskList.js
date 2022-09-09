@@ -1,13 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import Task from './Task';
 
 class TaskList extends Component {
     render() {
         return (
             <div>
-                TaskList
+                <table>
+                    <thead>
+                        Tasks
+                    </thead>
+                    <thead>
+                        actions
+                    </thead>
+                    <tbody>
+                        {this.props.tasks.map((task, index) => <Task key={index} task={task} />)}
+                    </tbody>
+                </table>
             </div>
         );
     }
 }
 
-export default TaskList;
+function mapStateToProps(state){
+    return {
+        tasks: state.tasks
+    }
+}
+
+export default connect(mapStateToProps)(TaskList);
